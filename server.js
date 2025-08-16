@@ -28,11 +28,6 @@ app.get('/api-key', (req, res) => {
   res.json({ apiKey });
 });
 
-// Schedule tasks to be run on the server for every 10 minutes
-cron.schedule('*/10 * * * *', () => {
-  console.log('Running a task every 10 minutes');
-});
-
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
