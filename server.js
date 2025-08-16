@@ -27,6 +27,10 @@ app.get('/api-key', (req, res) => {
   res.json({ apiKey });
 });
 
+setInterval(() => {
+  console.log('Server is running...');
+}, 600000);
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
