@@ -101,7 +101,7 @@ async function parseResumeWithAI(text) {
   // Fetch the API key from the Express server
   let apiKey = '';
   try {
-    const keyResponse = await fetch('http://localhost:3000/api-key');
+    const keyResponse = await fetch('https://resumepdftojson.onrender.com/api-key');
     const keyData = await keyResponse.json();
     apiKey = keyData.apiKey;
   } catch (err) {
