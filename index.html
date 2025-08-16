@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI PDF to JSON Resume Converter</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- PDF.js library from Mozilla -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .file-input-label {
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+        }
+        .file-input-label:hover {
+            background-color: #f0f9ff;
+            border-color: #38bdf8;
+        }
+        #pdf-file {
+            display: none;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex items-center justify-center min-h-screen">
+
+    <div class="w-full max-w-2xl mx-auto p-6 md:p-8 bg-white rounded-2xl shadow-lg">
+        
+        <!-- Page Title and Description -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900">AI PDF to JSON Converter</h1>
+            <p class="text-slate-500 mt-2">Upload a resume PDF and our AI will convert it into a structured JSON file.</p>
+        </div>
+
+        <!-- PDF Input and Dropzone -->
+        <div class="mb-6">
+            <label for="pdf-file" class="file-input-label w-full flex flex-col items-center justify-center p-8 border-2 border-dashed border-slate-300 rounded-xl text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-slate-400 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                </svg>
+                <span id="file-name" class="font-medium text-slate-600">Click to upload or drag and drop a PDF</span>
+                <span class="text-sm text-slate-500 mt-1">Maximum file size: 50MB</span>
+            </label>
+            <input type="file" id="pdf-file" accept="application/pdf">
+        </div>
+
+        <!-- Processing Status and Download Link -->
+        <div id="status-container" class="text-center h-20 flex flex-col justify-center items-center">
+            <div id="status-message" class="text-slate-600 flex items-center"></div>
+            <button id="download-btn" class="hidden mt-4 bg-emerald-500 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-opacity-75 transition-transform transform hover:scale-105">
+                Download JSON
+            </button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
