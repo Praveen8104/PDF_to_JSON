@@ -8,8 +8,12 @@ app.use(cors());
 app.use(express.json());
 
 
-// Serve the frontend HTML at the root URL
+
+// Serve static files (JS, CSS, images, etc.) from the project directory
 const path = require('path');
+app.use(express.static(__dirname));
+
+// Serve the frontend HTML at the root URL
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
