@@ -11,7 +11,7 @@ app.use(express.json());
 // Serve the frontend HTML at the root URL
 const path = require('path');
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'pdf_to_json.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Example endpoint to get API key
