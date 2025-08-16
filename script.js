@@ -83,7 +83,7 @@ async function handlePdf(file) {
     } catch (error) {
       console.error("Error parsing PDF:", error);
       updateStatus(
-        `❌ Error: Could not process the PDF file. ${error.message}`,
+        `Error: Could not process the PDF file. ${error.message}`,
         false
       );
     }
@@ -105,7 +105,7 @@ async function parseResumeWithAI(text) {
     const keyData = await keyResponse.json();
     apiKey = keyData.apiKey;
   } catch (err) {
-    updateStatus('❌ Error: Could not retrieve API key from server.', false);
+    updateStatus('Error: Could not retrieve API key from server.', false);
     return;
   }
   const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
@@ -285,8 +285,8 @@ async function parseResumeWithAI(text) {
       result.candidates[0].content.parts[0]
     ) {
       const parsedJson = JSON.parse(result.candidates[0].content.parts[0].text);
-      jsonData = JSON.stringify(parsedJson, null, 2); // Pretty print for download
-      updateStatus("✅ AI processing complete! Ready to download.", false);
+      jsonData = JSON.stringify(parsedJson, null, 2); 
+      updateStatus("Conversion complete!", false);
       downloadBtn.classList.remove("hidden");
     } else {
       console.error("Unexpected AI response structure:", result);
@@ -297,7 +297,7 @@ async function parseResumeWithAI(text) {
   } catch (error) {
     console.error("Error with AI processing:", error);
     updateStatus(
-      `❌ Error: AI could not process the text. ${error.message}`,
+      `Error: AI could not process the text. ${error.message}`,
       false
     );
   }
