@@ -3,7 +3,6 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const port = 3000;
-const cron = require('node-cron');
 
 app.use(cors());
 app.use(express.json());
@@ -26,6 +25,14 @@ app.get('/api-key', (req, res) => {
     return res.status(404).json({ error: 'API key not found' });
   }
   res.json({ apiKey });
+});
+
+app.get("/ping", (req, res) => {
+  const token = req.query.token;
+  if (token !== process.env.PING_SECRET) {
+    return res.status(403).send("Forbidden");
+  }
+  res.status(200).send("Render app is alive and secure!");
 });
 
 app.listen(port, () => {
