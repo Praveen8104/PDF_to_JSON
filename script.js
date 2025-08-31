@@ -8,7 +8,7 @@ const fileNameDisplay = document.getElementById("file-name");
 const statusMessage = document.getElementById("status-message");
 const downloadBtn = document.getElementById("download-btn");
 let jsonData = null;
-let originalFileName = "";
+let originalFileName = ""
 
 // Event listener for file selection
 fileInput.addEventListener("change", (event) => {
