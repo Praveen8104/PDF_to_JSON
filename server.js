@@ -27,7 +27,7 @@ app.get('/api-key', (req, res) => {
   res.json({ apiKey });
 });
 
-app.get("/ping", (req, res) => {
+app.get("/cron-job", (req, res) => {
   const token = req.query.token;
   if (token !== process.env.PING_SECRET) {
     return res.status(403).send("Forbidden");
