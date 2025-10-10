@@ -1,7 +1,5 @@
 pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js`;
 
-
-
 const fileInput = document.getElementById("pdf-file");
 const fileNameDisplay = document.getElementById("file-name");
 const statusMessage = document.getElementById("status-message");
